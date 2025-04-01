@@ -1,89 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. [Your Name] - Exoplanet Researcher</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-        nav {
-            background-color: #f4f4f4;
-            padding: 0.5rem;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #003366;
-        }
-        .hero-image {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: #003366;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Research & CV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Header with banner image */
+    .header {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    .header img.banner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Circular profile image */
+    .profile-pic {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid white;
+      overflow: hidden;
+      background-color: #fff;
+    }
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Main content styling */
+    .content {
+      margin-top: 60px;
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Dr. [Your Name]</h1>
-        <p>Exoplanet Researcher</p>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <img src="/api/placeholder/800/300" alt="Exoplanet illustration" class="hero-image">
-        
-        <h2>Welcome to My Exoplanet Research Page</h2>
-        <p>Hello! I'm Dr. [Your Name], a researcher dedicated to unraveling the mysteries of exoplanets. My work focuses on [brief description of your specific area, e.g., "detecting and characterizing Earth-like exoplanets in the habitable zone of their stars"].</p>
-        
-        <h3>Current Research Highlights</h3>
-        <ul>
-            <li>[Brief point about a current project or recent discovery]</li>
-            <li>[Another research highlight]</li>
-            <li>[A third interesting point about your work]</li>
-        </ul>
-        
-        <a href="#research" class="cta-button">Learn More About My Research</a>
-    </main>
-    
-    <footer>
-        <p>&copy; 2024 Dr. [Your Name]. All rights reserved.</p>
-    </footer>
+  <div class="header">
+    <!-- Top banner image -->
+    <img src="path_to_your_banner_image.jpg" alt="Banner Image" class="banner">
+    <!-- Circular profile image -->
+    <div class="profile-pic">
+      <img src="path_to_your_profile_image.jpg" alt="Profile Image">
+    </div>
+  </div>
+  <div class="content">
+    <div class="section" id="research">
+      <h2>Research</h2>
+      <p>Include detailed information about your research here: projects, publications, and academic contributions that showcase your work.</p>
+    </div>
+    <div class="section" id="cv">
+      <h2>Curriculum Vitae (CV)</h2>
+      <p>This section is dedicated to your CV. List your education, professional experience, skills, and other relevant details.</p>
+      <p>You can also provide a downloadable version of your CV <a href="path_to_your_cv.pdf" target="_blank">here</a>.</p>
+    </div>
+  </div>
 </body>
 </html>

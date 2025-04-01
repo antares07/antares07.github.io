@@ -5,25 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Research & CV</title>
   <style>
+    /* Basic Reset & Fonts */
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
     }
-    /* Header with banner image */
-    .header {
+    /* Header Section with Banner */
+    header {
       position: relative;
       width: 100%;
       height: 300px;
       background-color: #f5f5f5;
-      text-align: center;
+      overflow: hidden;
     }
-    .header img.banner {
+    header img.banner {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    /* Circular profile image */
+    /* Circular Profile Image */
     .profile-pic {
       position: absolute;
       bottom: -50px;
@@ -32,7 +34,7 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      border: 3px solid white;
+      border: 3px solid #fff;
       overflow: hidden;
       background-color: #fff;
     }
@@ -41,39 +43,100 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Main content styling */
-    .content {
-      margin-top: 60px;
-      padding: 20px;
+    /* Main Content */
+    main {
+      padding: 80px 20px 20px; /* extra top padding to account for the profile image */
     }
-    .section {
+    section {
       margin-bottom: 40px;
     }
-    .section h2 {
+    section h2 {
       border-bottom: 2px solid #ccc;
       padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    /* Research Section Styles */
+    .research-projects .project {
+      border-left: 5px solid #007BFF;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      background: #f0f8ff;
+    }
+    .research-projects h4 {
+      color: #007BFF;
+      margin-top: 0;
+    }
+    /* CV Download Button */
+    .cv-download a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .cv-download a:hover {
+      background-color: #0056b3;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #f5f5f5;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <!-- Top banner image -->
+  <!-- Header with Banner and Profile Image -->
+  <header>
     <img src="path_to_your_banner_image.jpg" alt="Banner Image" class="banner">
-    <!-- Circular profile image -->
     <div class="profile-pic">
       <img src="path_to_your_profile_image.jpg" alt="Profile Image">
     </div>
-  </div>
-  <div class="content">
-    <div class="section" id="research">
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Research Section -->
+    <section id="research">
       <h2>Research</h2>
-      <p>Include detailed information about your research here: projects, publications, and academic contributions that showcase your work.</p>
-    </div>
-    <div class="section" id="cv">
+      <div class="research-intro">
+        <p>Welcome to my research page! I focus on [Your Research Field], exploring topics such as [Key Topics]. I am currently affiliated with [Your Institution].</p>
+      </div>
+      <div class="research-projects">
+        <h3>Current Research Projects</h3>
+        <div class="project">
+          <h4>Project Title 1</h4>
+          <p><strong>Description:</strong> Brief summary of the research goal.</p>
+          <p><strong>Methods:</strong> Techniques used, such as machine learning, simulations, or theoretical modeling.</p>
+          <p><strong>Findings:</strong> Key results or progress so far.</p>
+          <p><a href="#">View More</a></p>
+        </div>
+        <div class="project">
+          <h4>Project Title 2</h4>
+          <p><strong>Description:</strong> Brief summary of the research goal.</p>
+          <p><strong>Methods:</strong> Techniques used, such as machine learning, simulations, or theoretical modeling.</p>
+          <p><strong>Findings:</strong> Key results or progress so far.</p>
+          <p><a href="#">View More</a></p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CV Section -->
+    <section id="cv">
       <h2>Curriculum Vitae (CV)</h2>
-      <p>This section is dedicated to your CV. List your education, professional experience, skills, and other relevant details.</p>
-      <p>You can also provide a downloadable version of your CV <a href="path_to_your_cv.pdf" target="_blank">here</a>.</p>
-    </div>
-  </div>
+      <p>This section provides an overview of my professional experience, education, and accomplishments. For a detailed view, you can download my CV.</p>
+      <div class="cv-download">
+        <a href="path_to_your_cv.pdf" download>Download My CV</a>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Your Name</p>
+  </footer>
 </body>
 </html>

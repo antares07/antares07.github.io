@@ -1,0 +1,11 @@
+# LaTeX build output
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+# Local preview copy of the CV (the live one is built by the workflow)
+/cv.pdf
+cv/cv.pdf
+_site/

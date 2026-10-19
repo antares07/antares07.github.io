@@ -1,142 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Research & CV</title>
-  <style>
-    /* Basic Reset & Fonts */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-    /* Header Section with Banner */
-    header {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      background-color: #f5f5f5;
-      overflow: hidden;
-    }
-    header img.banner {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    /* Circular Profile Image */
-    .profile-pic {
-      position: absolute;
-      bottom: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      overflow: hidden;
-      background-color: #fff;
-    }
-    .profile-pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    /* Main Content */
-    main {
-      padding: 80px 20px 20px; /* extra top padding to account for the profile image */
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    section h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    /* Research Section Styles */
-    .research-projects .project {
-      border-left: 5px solid #007BFF;
-      padding: 10px 15px;
-      margin-bottom: 15px;
-      background: #f0f8ff;
-    }
-    .research-projects h4 {
-      color: #007BFF;
-      margin-top: 0;
-    }
-    /* CV Download Button */
-    .cv-download a {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-    .cv-download a:hover {
-      background-color: #0056b3;
-    }
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px 0;
-      background-color: #f5f5f5;
-      margin-top: 40px;
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jane Doe</title>
+  <meta name="description" content="Jane Doe, PhD candidate in Computer Science at the University of Somewhere. Research on uncertainty in deep learning for medical imaging.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <!-- Header with Banner and Profile Image -->
-  <header>
-    <img src="path_to_your_banner_image.jpg" alt="Banner Image" class="banner">
-    <div class="profile-pic">
-      <img src="path_to_your_profile_image.jpg" alt="Profile Image">
-    </div>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="site-name" href="#">Jane Doe</a>
+    <nav aria-label="Main">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#news">News</a>
+      <a class="nav-cv" href="cv.pdf" download>CV</a>
+    </nav>
   </header>
-  
-  <!-- Main Content -->
-  <main>
-    <!-- Research Section -->
-    <section id="research">
-      <h2>Research</h2>
-      <div class="research-intro">
-        <p>Welcome to my research page! I focus on [Your Research Field], exploring topics such as [Key Topics]. I am currently affiliated with [Your Institution].</p>
-      </div>
-      <div class="research-projects">
-        <h3>Current Research Projects</h3>
-        <div class="project">
-          <h4>Project Title 1</h4>
-          <p><strong>Description:</strong> Brief summary of the research goal.</p>
-          <p><strong>Methods:</strong> Techniques used, such as machine learning, simulations, or theoretical modeling.</p>
-          <p><strong>Findings:</strong> Key results or progress so far.</p>
-          <p><a href="#">View More</a></p>
-        </div>
-        <div class="project">
-          <h4>Project Title 2</h4>
-          <p><strong>Description:</strong> Brief summary of the research goal.</p>
-          <p><strong>Methods:</strong> Techniques used, such as machine learning, simulations, or theoretical modeling.</p>
-          <p><strong>Findings:</strong> Key results or progress so far.</p>
-          <p><a href="#">View More</a></p>
-        </div>
+
+  <main id="main">
+
+    <!-- ===== Intro ===== -->
+    <section class="intro">
+      <!-- Optional portrait: add assets/portrait.jpg and uncomment
+      <img class="portrait" src="assets/portrait.jpg" alt="Jane Doe" width="160" height="160">
+      -->
+      <h1>Jane Doe</h1>
+      <p class="lede">
+        PhD candidate in Computer Science at the University of Somewhere,
+        advised by Prof.&nbsp;Alan Smith. I build deep learning models that
+        know when they are unsure, with a focus on medical imaging.
+      </p>
+      <div class="actions">
+        <a class="button" href="cv.pdf" download>Download CV (PDF)</a>
+        <ul class="contact" aria-label="Contact and profiles">
+          <li><a href="mailto:jane.doe@example.ac.uk">Email</a></li>
+          <li><a href="https://scholar.google.com">Google Scholar</a></li>
+          <li><a href="https://github.com/janedoe">GitHub</a></li>
+          <li><a href="https://orcid.org/0000-0000-0000-0000">ORCID</a></li>
+        </ul>
       </div>
     </section>
-    
-    <!-- CV Section -->
-    <section id="cv">
-      <h2>Curriculum Vitae (CV)</h2>
-      <p>This section provides an overview of my professional experience, education, and accomplishments. For a detailed view, you can download my CV.</p>
-      <div class="cv-download">
-        <a href="path_to_your_cv.pdf" download>Download My CV</a>
-      </div>
+
+    <!-- ===== Research ===== -->
+    <section id="research" aria-labelledby="research-h">
+      <h2 id="research-h">Research</h2>
+      <dl class="rows">
+        <div class="row">
+          <dt>Uncertainty</dt>
+          <dd>Calibrated confidence estimates for deep networks, so a model's
+            stated certainty matches how often it is actually right.</dd>
+        </div>
+        <div class="row">
+          <dt>Distribution shift</dt>
+          <dd>Detecting and adapting to data that differs from training, such as
+            scans from a new hospital or a different scanner.</dd>
+        </div>
+        <div class="row">
+          <dt>Label efficiency</dt>
+          <dd>Self-supervised and semi-supervised methods for medical datasets
+            where expert annotations are scarce and expensive.</dd>
+        </div>
+      </dl>
     </section>
+
+    <!-- ===== Publications ===== -->
+    <section id="publications" aria-labelledby="pubs-h">
+      <div class="section-head">
+        <h2 id="pubs-h">Publications</h2>
+        <div class="filters" role="group" aria-label="Filter publications">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="conference" aria-pressed="false">Conference</button>
+          <button type="button" data-filter="journal" aria-pressed="false">Journal</button>
+          <button type="button" data-filter="preprint" aria-pressed="false">Preprints</button>
+        </div>
+      </div>
+
+      <!-- To add a paper: copy an <li class="pub"> into the right year.
+           data-type is conference, journal or preprint. -->
+      <div class="year-group row">
+        <h3>2026</h3>
+        <ol class="pubs">
+          <li class="pub" data-type="preprint">
+            <a class="pub-title" href="https://arxiv.org/abs/2601.00000">Conformal prediction for 3D segmentation</a>
+            <p class="pub-authors"><strong>Jane Doe</strong>, Chris Lee, Alan Smith</p>
+            <p class="pub-venue">Under review at ICLR 2026</p>
+            <p class="pub-links"><a href="https://arxiv.org/abs/2601.00000">arXiv</a></p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="year-group row">
+        <h3>2025</h3>
+        <ol class="pubs">
+          <li class="pub" data-type="conference">
+            <a class="pub-title" href="#">Calibrated ensembles for segmentation under distribution shift</a>
+            <p class="pub-authors"><strong>Jane Doe</strong>, Anna Rossi, Alan Smith</p>
+            <p class="pub-venue">NeurIPS 2025</p>
+            <p class="pub-links"><a href="#">Paper</a> <a href="#">Code</a> <a href="#">Poster</a></p>
+          </li>
+          <li class="pub" data-type="journal">
+            <a class="pub-title" href="#">A benchmark for uncertainty in medical image analysis</a>
+            <p class="pub-authors">Bo Chen, <strong>Jane Doe</strong>, Alan Smith</p>
+            <p class="pub-venue">Medical Image Analysis, vol. 92</p>
+            <p class="pub-links"><a href="#">Paper</a> <a href="#">Dataset</a></p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="year-group row">
+        <h3>2024</h3>
+        <ol class="pubs">
+          <li class="pub" data-type="conference">
+            <a class="pub-title" href="#">Label-efficient learning for histopathology</a>
+            <p class="pub-authors"><strong>Jane Doe</strong>, Alan Smith</p>
+            <p class="pub-venue">MICCAI 2024, oral presentation, best student paper award</p>
+            <p class="pub-links"><a href="#">Paper</a> <a href="#">Code</a> <a href="#">Slides</a></p>
+          </li>
+        </ol>
+      </div>
+
+      <p class="filter-empty" hidden>No publications of this type yet.</p>
+    </section>
+
+    <!-- ===== News ===== -->
+    <section id="news" aria-labelledby="news-h">
+      <h2 id="news-h">News</h2>
+      <ol class="rows news">
+        <li class="row"><time datetime="2026-09">Sep 2026</time>
+          <p>Paper on conformal prediction for 3D segmentation submitted to ICLR.</p></li>
+        <li class="row"><time datetime="2025-12">Dec 2025</time>
+          <p>Presented calibrated ensembles at NeurIPS in San Diego.</p></li>
+        <li class="row"><time datetime="2025-06">Jun 2025</time>
+          <p>Started a summer research internship at Example AI Lab, Zurich.</p></li>
+        <li class="row"><time datetime="2024-10">Oct 2024</time>
+          <p>Received the best student paper award at MICCAI.</p></li>
+      </ol>
+    </section>
+
+    <!-- ===== Teaching & service ===== -->
+    <section id="teaching" aria-labelledby="teach-h">
+      <h2 id="teach-h">Teaching and service</h2>
+      <dl class="rows">
+        <div class="row">
+          <dt>Teaching</dt>
+          <dd>Teaching assistant for Machine Learning (MSc, 2024 and 2025) and
+            Linear Algebra (BSc, 2023). Co-supervised two MSc theses.</dd>
+        </div>
+        <div class="row">
+          <dt>Reviewing</dt>
+          <dd>NeurIPS, ICLR, MICCAI and Medical Image Analysis.</dd>
+        </div>
+      </dl>
+    </section>
+
   </main>
-  
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Your Name</p>
+
+  <footer class="site-footer">
+    <p>Jane Doe, Department of Computer Science, University of Somewhere, Leeds, UK</p>
+    <p><a href="cv.pdf" download>Download CV (PDF)</a></p>
   </footer>
+
+  <script>
+    // Publication filter: hides papers of other types and empty years.
+    (function () {
+      const buttons = document.querySelectorAll('.filters button');
+      const groups = document.querySelectorAll('.year-group');
+      const empty = document.querySelector('.filter-empty');
+      buttons.forEach(btn => btn.addEventListener('click', () => {
+        const type = btn.dataset.filter;
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+        let shown = 0;
+        groups.forEach(group => {
+          let visible = 0;
+          group.querySelectorAll('.pub').forEach(pub => {
+            const match = type === 'all' || pub.dataset.type === type;
+            pub.hidden = !match;
+            if (match) visible++;
+          });
+          group.hidden = visible === 0;
+          shown += visible;
+        });
+        empty.hidden = shown > 0;
+      }));
+    })();
+  </script>
 </body>
 </html>

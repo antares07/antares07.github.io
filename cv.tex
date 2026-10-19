@@ -1,0 +1,152 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks,
+  pdftitle={Jane Doe - Curriculum Vitae},
+  pdfauthor={Jane Doe}]{hyperref}
+
+% Make the PDF text machine-readable (copy/paste and ATS parsers
+% get real characters instead of glyph codes)
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% ---------- Layout ----------
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=2pt}
+
+\definecolor{accent}{RGB}{30,60,110}
+\titleformat{\section}{\large\bfseries\scshape\color{accent}}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% ---------- Commands ----------
+% \cventry{Role / Degree}{Dates}{Institution}{Location}
+\newcommand{\cventry}[4]{%
+  \textbf{#1}\hfill #2\\
+  \textit{#3}\hfill\textit{#4}\par\smallskip}
+
+% \cvline{Left text}{Right text}: one-line entries (awards, talks)
+\newcommand{\cvline}[2]{#1\hfill #2\par}
+
+% Highlights your own name in author lists
+\newcommand{\me}{\textbf{J.~Doe}}
+
+\begin{document}
+
+% ---------- Header ----------
+\begin{center}
+  {\Huge\bfseries Jane Doe}\\[4pt]
+  {\large PhD Candidate in Computer Science}\\[2pt]
+  Department of Computer Science, University of Somewhere, Leeds, UK\\[4pt]
+  \href{mailto:jane.doe@example.ac.uk}{jane.doe@example.ac.uk} \textbullet\
+  \href{https://janedoe.github.io}{janedoe.github.io}\\
+  \href{https://scholar.google.com}{Google Scholar} \textbullet\
+  \href{https://orcid.org/0000-0000-0000-0000}{ORCID: 0000-0000-0000-0000} \textbullet\
+  \href{https://github.com/janedoe}{github.com/janedoe}
+\end{center}
+
+% ---------- Research interests ----------
+\section{Research Interests}
+Representation learning, uncertainty quantification in deep neural networks,
+and machine learning for medical imaging.
+
+% ---------- Education ----------
+\section{Education}
+\cventry{PhD in Computer Science}{2023 -- 2027 (expected)}{University of Somewhere}{Leeds, UK}
+\textit{Thesis:} Calibrated Uncertainty for Deep Models in Clinical Imaging\\
+\textit{Advisor:} Prof.~Alan Smith
+
+\medskip
+\cventry{MSc in Artificial Intelligence}{2021 -- 2023}{University of Elsewhere}{Milan, Italy}
+110/110 cum laude. \textit{Thesis:} Self-supervised pretraining for small medical datasets.
+
+\medskip
+\cventry{BSc in Mathematics}{2018 -- 2021}{University of Elsewhere}{Milan, Italy}
+Final grade 110/110.
+
+% ---------- Publications ----------
+\section{Publications}
+\textit{Peer-reviewed conference papers}
+\begin{enumerate}[label={[C\arabic*]}, leftmargin=*, noitemsep, topsep=2pt]
+  \item \me, A.~Rossi, A.~Smith. Calibrated ensembles for segmentation under
+        distribution shift. \textit{NeurIPS}, 2025.
+  \item \me, A.~Smith. Label-efficient learning for histopathology.
+        \textit{MICCAI}, 2024. \textbf{Oral presentation.}
+\end{enumerate}
+
+\smallskip
+\textit{Journal articles}
+\begin{enumerate}[label={[J\arabic*]}, leftmargin=*, noitemsep, topsep=2pt]
+  \item B.~Chen, \me, A.~Smith. A benchmark for uncertainty in medical image
+        analysis. \textit{Medical Image Analysis}, 92, 2025.
+\end{enumerate}
+
+\smallskip
+\textit{Preprints and under review}
+\begin{enumerate}[label={[P\arabic*]}, leftmargin=*, noitemsep, topsep=2pt]
+  \item \me, C.~Lee, A.~Smith. Conformal prediction for 3D segmentation.
+        Under review at \textit{ICLR}, 2026. arXiv:2601.00000.
+\end{enumerate}
+
+% ---------- Research experience ----------
+\section{Research Experience}
+\cventry{Research Intern}{Jun -- Sep 2025}{Example AI Lab}{Zurich, Switzerland}
+\begin{itemize}
+  \item Developed a scalable uncertainty estimation pipeline for foundation models,
+        later adopted in an internal evaluation suite.
+\end{itemize}
+
+\medskip
+\cventry{Visiting Researcher}{Feb -- Apr 2024}{University of Anywhere}{Paris, France}
+\begin{itemize}
+  \item Collaborated on semi-supervised segmentation; resulted in [C2].
+\end{itemize}
+
+% ---------- Teaching ----------
+\section{Teaching}
+\cvline{Teaching Assistant, \textit{Machine Learning} (MSc, 120 students)}{2024, 2025}
+\cvline{Teaching Assistant, \textit{Linear Algebra} (BSc)}{2023}
+\cvline{Co-supervised 2 MSc theses on medical image segmentation}{2024 -- 2025}
+
+% ---------- Awards ----------
+\section{Awards and Funding}
+\cvline{Doctoral Scholarship, University of Somewhere (full funding)}{2023 -- 2027}
+\cvline{Best Student Paper Award, MICCAI}{2024}
+\cvline{Travel Grant, NeurIPS}{2025}
+
+% ---------- Talks ----------
+\section{Talks}
+\cvline{Uncertainty in medical imaging, Invited talk, Example AI Lab}{2025}
+\cvline{Label-efficient histopathology, Oral, MICCAI, Marrakesh}{2024}
+
+% ---------- Service ----------
+\section{Academic Service}
+\cvline{Reviewer: NeurIPS, ICLR, MICCAI, \textit{Medical Image Analysis}}{2024 -- present}
+\cvline{Organiser, departmental ML reading group}{2023 -- present}
+
+% ---------- Skills ----------
+\section{Skills}
+\begin{tabular}{@{}ll@{}}
+  \textbf{Programming:} & Python, C++, Bash, \LaTeX \\
+  \textbf{ML / DL:}     & PyTorch, JAX, Hugging Face, scikit-learn, Weights \& Biases \\
+  \textbf{Compute:}     & SLURM clusters, multi-GPU training, Docker \\
+  \textbf{Languages:}   & Italian (native), English (C2), French (B1) \\
+\end{tabular}
+
+% ---------- References ----------
+\section{References}
+\begin{tabular}{@{}p{0.48\textwidth}p{0.48\textwidth}@{}}
+  \textbf{Prof.~Alan Smith} (PhD advisor)     & \textbf{Dr.~Anna Rossi} (collaborator) \\
+  University of Somewhere                     & Example AI Lab \\
+  \href{mailto:a.smith@example.ac.uk}{a.smith@example.ac.uk} &
+  \href{mailto:a.rossi@example.com}{a.rossi@example.com} \\
+\end{tabular}
+
+\end{document}

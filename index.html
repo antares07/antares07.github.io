@@ -3,69 +3,305 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jane Doe</title>
-  <meta name="description" content="Jane Doe, PhD candidate in Computer Science at the University of Somewhere. Research on uncertainty in deep learning for medical imaging.">
+  <title>Laro | Exoplanet atmospheres and machine learning</title>
+  <meta name="description" content="PhD student at the University of Padova using machine learning to retrieve the atmospheres of exoplanets.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+
+  <!-- All styles live here, inside the page, so they always load on GitHub Pages. -->
+  <style>
+    /* ---------- Tokens ----------
+       The accent is the UniPD red used for links in the LaTeX CV. */
+    :root {
+      --paper: #fbfbfc;
+      --ink: #161a22;
+      --muted: #5c6370;
+      --rule: #e1e3e8;
+      --accent: #9b0014;
+      --accent-soft: #f6e6e8;
+      --on-accent: #ffffff;
+      --night: #070b16;              /* hero colour, also the fallback if the image is missing */
+
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      --margin-col: 9rem;
+      --measure: 46rem;
+      --page: calc(var(--measure) + var(--margin-col) + 2rem);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #0e1119;
+        --ink: #e6e8ee;
+        --muted: #9aa1ae;
+        --rule: #262b36;
+        --accent: #ef7a86;
+        --accent-soft: #2a1519;
+        --on-accent: #12141a;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .skip {
+      position: absolute; left: 1rem; top: -3rem; z-index: 10;
+      background: var(--accent); color: var(--on-accent);
+      padding: 0.5rem 0.75rem; font-family: var(--sans);
+    }
+    .skip:focus { top: 1rem; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; flex-direction: column;
+      color: #f3f1ee;
+      background-color: var(--night);
+      /* dark wash on the left keeps the text readable; the planet stays clear on the right */
+      background-image:
+        linear-gradient(90deg, rgba(7,11,22,0.92) 0%, rgba(7,11,22,0.70) 38%, rgba(7,11,22,0.05) 70%),
+        url("assets/background.jpg");
+      background-size: cover;
+      background-position: 70% center;
+    }
+    .hero a { color: inherit; }
+    .hero :focus-visible { outline-color: #ffffff; }
+
+    .site-header {
+      width: 100%; max-width: var(--page);
+      margin: 0 auto; padding: 1.5rem 1rem;
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+      font-family: var(--sans); font-size: 0.95rem;
+    }
+    .site-name { text-decoration: none; font-weight: 700; letter-spacing: 0.01em; }
+    .site-header nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+    .site-header nav a { text-decoration: none; opacity: 0.8; }
+    .site-header nav a:hover { opacity: 1; text-decoration: underline; }
+
+    .hero-body {
+      flex: 1;
+      width: 100%; max-width: var(--page);
+      margin: 0 auto; padding: 2rem 1rem 5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-text { max-width: 36rem; }
+
+    /* Portrait: shows assets/photo.jpg; until that exists, the initial is shown instead */
+    .portrait {
+      position: relative;
+      width: 9.5rem; height: 9.5rem;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      background: linear-gradient(140deg, #3a1a22, #10162a);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 0 0 9px rgba(255,170,120,0.18);
+      display: grid; place-items: center;
+      overflow: hidden;
+    }
+    .portrait span { font-size: 3.5rem; font-weight: 300; color: rgba(255,255,255,0.75); }
+    .portrait img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.25rem, 8vw, 6rem);
+      font-weight: 400;
+      font-variation-settings: "opsz" 60;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
+    }
+    .role {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      margin: 0 0 1.5rem;
+      color: #ffc9a8;   /* the warm colour of the planet's limb */
+    }
+    .lede {
+      font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+      line-height: 1.5;
+      font-weight: 300;
+      margin: 0 0 2.25rem;
+    }
+
+    .actions {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem;
+      font-family: var(--sans); font-size: 1rem;
+    }
+    .button {
+      display: inline-block;
+      background: var(--accent); color: #ffffff;
+      padding: 0.75rem 1.3rem; border-radius: 4px;
+      font-family: var(--sans); font-weight: 700; text-decoration: none;
+    }
+    .hero .button { background: #9b0014; color: #ffffff; }
+    .button:hover { filter: brightness(1.15); text-decoration: none; }
+    .contact { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+    .hero .contact a { opacity: 0.9; }
+
+    /* ---------- Content ---------- */
+    main, .site-footer {
+      max-width: var(--page);
+      margin: 0 auto; padding: 0 1rem;
+    }
+    main > section { padding: 3.5rem 0 0; }
+    main > section + section { border-top: 1px solid var(--rule); margin-top: 3.5rem; }
+
+    h2 { font-size: 1.6rem; font-weight: 600; line-height: 1.2; margin: 0 0 1.5rem; }
+
+    .rows { margin: 0; padding: 0; list-style: none; }
+    .row {
+      display: grid;
+      grid-template-columns: var(--margin-col) minmax(0, var(--measure));
+      gap: 0 2rem;
+    }
+    .rows .row + .row { margin-top: 1rem; }
+    .row > dt, .row > time, .row > h3 {
+      font-family: var(--sans); font-size: 0.95rem; font-weight: 400;
+      color: var(--muted); padding-top: 0.2rem; margin: 0;
+    }
+    .row > dd, .row > p { margin: 0; }
+
+    .about p { max-width: var(--measure); margin: 0 0 1rem; }
+
+    /* Publications */
+    .section-head {
+      display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+      gap: 0.75rem 1.5rem; margin-bottom: 1.5rem;
+    }
+    .section-head h2 { margin: 0; }
+    .filters { display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--sans); }
+    .filters button {
+      font: inherit; font-size: 0.9rem;
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--rule); border-radius: 999px;
+      padding: 0.25rem 0.8rem; cursor: pointer;
+    }
+    .filters button:hover { color: var(--ink); border-color: var(--muted); }
+    .filters button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+    .pub-key { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); margin: -0.5rem 0 1.5rem; }
+    .year-group + .year-group { margin-top: 2rem; }
+    .year-group[hidden], .pub[hidden] { display: none; }
+    .pubs { list-style: none; margin: 0; padding: 0; }
+    .pub + .pub { margin-top: 1.5rem; }
+    .pub p { margin: 0; }
+    .pub-title { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 1.2rem; line-height: 1.35; }
+    .pub-title:hover { color: var(--accent); text-decoration: underline; }
+    .pub-authors strong { font-weight: 600; }
+    .pub-venue { color: var(--muted); font-style: italic; }
+    .pub-links { font-family: var(--sans); font-size: 0.9rem; margin-top: 0.3rem; display: flex; gap: 1rem; }
+    .filter-empty { color: var(--muted); font-family: var(--sans); padding-left: calc(var(--margin-col) + 2rem); }
+
+    .site-footer {
+      background: linear-gradient(var(--rule), var(--rule)) 1rem 0 / calc(100% - 2rem) 1px no-repeat;
+      margin-top: 4rem; padding-top: 1.5rem; padding-bottom: 3rem;
+      font-family: var(--sans); font-size: 0.9rem; color: var(--muted);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem;
+    }
+    .site-footer p { margin: 0; }
+
+    /* ---------- Small screens ---------- */
+    @media (max-width: 720px) {
+      body { font-size: 1.0625rem; }
+      .hero {
+        min-height: auto;
+        background-image:
+          linear-gradient(180deg, rgba(7,11,22,0.55) 0%, rgba(7,11,22,0.85) 55%, rgba(7,11,22,0.95) 100%),
+          url("assets/background.jpg");
+        background-position: 78% center;
+      }
+      .site-header { flex-direction: column; gap: 0.5rem; }
+      .hero-body { padding-top: 1.5rem; padding-bottom: 3rem; }
+      .portrait { width: 7.5rem; height: 7.5rem; }
+      .row { grid-template-columns: minmax(0, 1fr); }
+      .row > dt, .row > time, .row > h3 { padding-top: 0; margin-bottom: 0.15rem; }
+      .filter-empty { padding-left: 0; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <a class="site-name" href="#">Jane Doe</a>
-    <nav aria-label="Main">
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#news">News</a>
-      <a class="nav-cv" href="cv.pdf" download>CV</a>
-    </nav>
-  </header>
+  <!-- ===== Hero ===== -->
+  <div class="hero">
+    <header class="site-header">
+      <a class="site-name" href="#">Laro</a>
+      <nav aria-label="Main">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#news">News</a>
+        <a href="cv.pdf" download>CV</a>
+      </nav>
+    </header>
+
+    <div class="hero-body">
+      <div class="hero-text">
+        <!-- Your photo: save a square image as assets/photo.jpg.
+             Until it exists, the initial below is shown. -->
+        <div class="portrait">
+          <span aria-hidden="true">L</span>
+          <img src="assets/photo.jpg" alt="Portrait of Laro" onerror="this.remove()">
+        </div>
+
+        <h1>Laro</h1>
+        <p class="role">PhD student in Astronomy, University of Padova</p>
+        <p class="lede">
+          I use machine learning to read the atmospheres of exoplanets from
+          their spectra, and study how the way we build training data shapes
+          what those models can tell us.
+        </p>
+        <div class="actions">
+          <a class="button" href="cv.pdf" download>Download CV (PDF)</a>
+          <ul class="contact" aria-label="Contact and profiles">
+            <li><a href="mailto:your.name@studenti.unipd.it">Email</a></li>
+            <li><a href="https://scholar.google.com">Google Scholar</a></li>
+            <li><a href="https://ui.adsabs.harvard.edu">NASA ADS</a></li>
+            <li><a href="https://github.com">GitHub</a></li>
+            <li><a href="https://orcid.org">ORCID</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main id="main">
-
-    <!-- ===== Intro ===== -->
-    <section class="intro">
-      <!-- Optional portrait: add assets/portrait.jpg and uncomment
-      <img class="portrait" src="assets/portrait.jpg" alt="Jane Doe" width="160" height="160">
-      -->
-      <h1>Jane Doe</h1>
-      <p class="lede">
-        PhD candidate in Computer Science at the University of Somewhere,
-        advised by Prof.&nbsp;Alan Smith. I build deep learning models that
-        know when they are unsure, with a focus on medical imaging.
-      </p>
-      <div class="actions">
-        <a class="button" href="cv.pdf" download>Download CV (PDF)</a>
-        <ul class="contact" aria-label="Contact and profiles">
-          <li><a href="mailto:jane.doe@example.ac.uk">Email</a></li>
-          <li><a href="https://scholar.google.com">Google Scholar</a></li>
-          <li><a href="https://github.com/janedoe">GitHub</a></li>
-          <li><a href="https://orcid.org/0000-0000-0000-0000">ORCID</a></li>
-        </ul>
-      </div>
-    </section>
 
     <!-- ===== Research ===== -->
     <section id="research" aria-labelledby="research-h">
       <h2 id="research-h">Research</h2>
       <dl class="rows">
         <div class="row">
-          <dt>Uncertainty</dt>
-          <dd>Calibrated confidence estimates for deep networks, so a model's
-            stated certainty matches how often it is actually right.</dd>
+          <dt>ML retrievals</dt>
+          <dd>Neural networks that infer temperature, composition and clouds
+            from transmission and emission spectra in seconds instead of hours.</dd>
         </div>
         <div class="row">
-          <dt>Distribution shift</dt>
-          <dd>Detecting and adapting to data that differs from training, such as
-            scans from a new hospital or a different scanner.</dd>
+          <dt>Training data</dt>
+          <dd>How choices in building the training set of simulated spectra,
+            such as priors, noise and sampling, bias what the models retrieve.</dd>
         </div>
         <div class="row">
-          <dt>Label efficiency</dt>
-          <dd>Self-supervised and semi-supervised methods for medical datasets
-            where expert annotations are scarce and expensive.</dd>
+          <dt>Degeneracies</dt>
+          <dd>Which atmospheric parameters cannot be told apart from a given
+            spectrum, and how to report that uncertainty honestly.</dd>
         </div>
       </dl>
     </section>
@@ -76,22 +312,23 @@
         <h2 id="pubs-h">Publications</h2>
         <div class="filters" role="group" aria-label="Filter publications">
           <button type="button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" data-filter="conference" aria-pressed="false">Conference</button>
           <button type="button" data-filter="journal" aria-pressed="false">Journal</button>
+          <button type="button" data-filter="conference" aria-pressed="false">Proceedings</button>
           <button type="button" data-filter="preprint" aria-pressed="false">Preprints</button>
         </div>
       </div>
+      <p class="pub-key"><sup>α</sup> Authors in alphabetical order. <sup>*</sup> Equal contribution.</p>
 
-      <!-- To add a paper: copy an <li class="pub"> into the right year.
-           data-type is conference, journal or preprint. -->
+      <!-- PLACEHOLDERS: replace with your papers. Copy an <li class="pub"> into the right year.
+           data-type is journal, conference or preprint. -->
       <div class="year-group row">
         <h3>2026</h3>
         <ol class="pubs">
           <li class="pub" data-type="preprint">
-            <a class="pub-title" href="https://arxiv.org/abs/2601.00000">Conformal prediction for 3D segmentation</a>
-            <p class="pub-authors"><strong>Jane Doe</strong>, Chris Lee, Alan Smith</p>
-            <p class="pub-venue">Under review at ICLR 2026</p>
-            <p class="pub-links"><a href="https://arxiv.org/abs/2601.00000">arXiv</a></p>
+            <a class="pub-title" href="#">Title of your paper on training-set construction for ML retrievals</a>
+            <p class="pub-authors"><strong>Laro</strong>, A. Author, B. Author</p>
+            <p class="pub-venue">Submitted to A&amp;A, arXiv:0000.00000</p>
+            <p class="pub-links"><a href="#">arXiv</a> <a href="#">Code</a></p>
           </li>
         </ol>
       </div>
@@ -99,29 +336,17 @@
       <div class="year-group row">
         <h3>2025</h3>
         <ol class="pubs">
-          <li class="pub" data-type="conference">
-            <a class="pub-title" href="#">Calibrated ensembles for segmentation under distribution shift</a>
-            <p class="pub-authors"><strong>Jane Doe</strong>, Anna Rossi, Alan Smith</p>
-            <p class="pub-venue">NeurIPS 2025</p>
-            <p class="pub-links"><a href="#">Paper</a> <a href="#">Code</a> <a href="#">Poster</a></p>
-          </li>
           <li class="pub" data-type="journal">
-            <a class="pub-title" href="#">A benchmark for uncertainty in medical image analysis</a>
-            <p class="pub-authors">Bo Chen, <strong>Jane Doe</strong>, Alan Smith</p>
-            <p class="pub-venue">Medical Image Analysis, vol. 92</p>
-            <p class="pub-links"><a href="#">Paper</a> <a href="#">Dataset</a></p>
+            <a class="pub-title" href="#">Title of a collaboration paper</a>
+            <p class="pub-authors">A. Author, B. Author, C. Author, <strong>Laro</strong>, et al.<sup>α</sup></p>
+            <p class="pub-venue">MNRAS, 000, 0000</p>
+            <p class="pub-links"><a href="#">Paper</a> <a href="#">ADS</a></p>
           </li>
-        </ol>
-      </div>
-
-      <div class="year-group row">
-        <h3>2024</h3>
-        <ol class="pubs">
           <li class="pub" data-type="conference">
-            <a class="pub-title" href="#">Label-efficient learning for histopathology</a>
-            <p class="pub-authors"><strong>Jane Doe</strong>, Alan Smith</p>
-            <p class="pub-venue">MICCAI 2024, oral presentation, best student paper award</p>
-            <p class="pub-links"><a href="#">Paper</a> <a href="#">Code</a> <a href="#">Slides</a></p>
+            <a class="pub-title" href="#">Title of a conference contribution</a>
+            <p class="pub-authors"><strong>Laro</strong>, A. Author</p>
+            <p class="pub-venue">Proceedings of a conference, 2025</p>
+            <p class="pub-links"><a href="#">Paper</a> <a href="#">Poster</a></p>
           </li>
         </ol>
       </div>
@@ -132,30 +357,32 @@
     <!-- ===== News ===== -->
     <section id="news" aria-labelledby="news-h">
       <h2 id="news-h">News</h2>
-      <ol class="rows news">
-        <li class="row"><time datetime="2026-09">Sep 2026</time>
-          <p>Paper on conformal prediction for 3D segmentation submitted to ICLR.</p></li>
-        <li class="row"><time datetime="2025-12">Dec 2025</time>
-          <p>Presented calibrated ensembles at NeurIPS in San Diego.</p></li>
-        <li class="row"><time datetime="2025-06">Jun 2025</time>
-          <p>Started a summer research internship at Example AI Lab, Zurich.</p></li>
-        <li class="row"><time datetime="2024-10">Oct 2024</time>
-          <p>Received the best student paper award at MICCAI.</p></li>
+      <ol class="rows">
+        <li class="row"><time datetime="2026-10">Oct 2026</time>
+          <p>Replace these with your own updates: a talk, a paper, a visit.</p></li>
+        <li class="row"><time datetime="2026-06">Jun 2026</time>
+          <p>Member of the local organising committee for a conference in Padova.</p></li>
+        <li class="row"><time datetime="2025-11">Nov 2025</time>
+          <p>Started my PhD at the Department of Physics and Astronomy, University of Padova.</p></li>
       </ol>
     </section>
 
     <!-- ===== Teaching & service ===== -->
-    <section id="teaching" aria-labelledby="teach-h">
-      <h2 id="teach-h">Teaching and service</h2>
+    <section id="service" aria-labelledby="service-h">
+      <h2 id="service-h">Teaching and service</h2>
       <dl class="rows">
         <div class="row">
-          <dt>Teaching</dt>
-          <dd>Teaching assistant for Machine Learning (MSc, 2024 and 2025) and
-            Linear Algebra (BSc, 2023). Co-supervised two MSc theses.</dd>
+          <dt>Organisation</dt>
+          <dd>Local organising committee, conference name, Padova (2026).
+            Student volunteer, conference name (2025).</dd>
         </div>
         <div class="row">
-          <dt>Reviewing</dt>
-          <dd>NeurIPS, ICLR, MICCAI and Medical Image Analysis.</dd>
+          <dt>Teaching</dt>
+          <dd>Teaching assistant for a course name (2025).</dd>
+        </div>
+        <div class="row">
+          <dt>Outreach</dt>
+          <dd>Public observing nights and school visits.</dd>
         </div>
       </dl>
     </section>
@@ -163,32 +390,33 @@
   </main>
 
   <footer class="site-footer">
-    <p>Jane Doe, Department of Computer Science, University of Somewhere, Leeds, UK</p>
+    <p>Laro, Department of Physics and Astronomy, University of Padova, Italy</p>
     <p><a href="cv.pdf" download>Download CV (PDF)</a></p>
   </footer>
 
   <script>
     // Publication filter: hides papers of other types and empty years.
     (function () {
-      const buttons = document.querySelectorAll('.filters button');
-      const groups = document.querySelectorAll('.year-group');
-      const empty = document.querySelector('.filter-empty');
-      buttons.forEach(btn => btn.addEventListener('click', () => {
-        const type = btn.dataset.filter;
-        buttons.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
-        let shown = 0;
-        groups.forEach(group => {
-          let visible = 0;
-          group.querySelectorAll('.pub').forEach(pub => {
-            const match = type === 'all' || pub.dataset.type === type;
-            pub.hidden = !match;
-            if (match) visible++;
+      var buttons = document.querySelectorAll('.filters button');
+      var groups = document.querySelectorAll('.year-group');
+      var empty = document.querySelector('.filter-empty');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var type = btn.dataset.filter, shown = 0;
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+          groups.forEach(function (group) {
+            var visible = 0;
+            group.querySelectorAll('.pub').forEach(function (pub) {
+              var match = type === 'all' || pub.dataset.type === type;
+              pub.hidden = !match;
+              if (match) visible++;
+            });
+            group.hidden = visible === 0;
+            shown += visible;
           });
-          group.hidden = visible === 0;
-          shown += visible;
+          empty.hidden = shown > 0;
         });
-        empty.hidden = shown > 0;
-      }));
+      });
     })();
   </script>
 </body>
